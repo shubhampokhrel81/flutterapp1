@@ -30,10 +30,24 @@ Widget getListView(){
           leading: Icon(Icons.arrow_right,),
           title: Text(listItems[index]),
           onTap: (){
-            print("List ${listItems[index]} clicked");
+            showSnackBar(context, listItems[index]);
+//            print("List ${listItems[index]} clicked");
           },
         );
   }
   );
   return listView;
+}
+
+void showSnackBar(BuildContext context, String item){
+  var snackBar = SnackBar(
+    content: Text("You just tapped $item"),
+    action: SnackBarAction(
+      label: "UNDO",
+      onPressed: (){
+        debugPrint("Performing dummy UNDO operation");
+      },
+    ),
+  );
+      Scaffold.of(context).showSnackBar(snackBar);
 }
