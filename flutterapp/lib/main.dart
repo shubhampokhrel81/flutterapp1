@@ -31,6 +31,7 @@ Widget getListView(){
       title: Text("Phone",style: TextStyle(color: Colors.blue, fontSize: 20.0),),
     ),
     Text("Another element Text on listTile", style:TextStyle(fontSize: 30.0),textAlign: TextAlign.center,),
+    Container(color: Colors.blueGrey,height: 40.0,)
   ],
   );
   return listView;
