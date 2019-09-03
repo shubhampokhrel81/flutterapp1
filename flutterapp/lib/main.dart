@@ -5,6 +5,13 @@ void main() => runApp(MaterialApp(
   home: Scaffold(
     appBar: AppBar(title:Text("Dynamic lists")),
     body: getListView(),
+    floatingActionButton: FloatingActionButton(
+      onPressed: (){
+        debugPrint("FAB clicked");
+      },
+      child: Icon(Icons.add),
+      tooltip: 'Add more item',
+    ),
   ),
 
 ));
