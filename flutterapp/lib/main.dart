@@ -20,7 +20,11 @@ Widget getListView(){
   var listView = ListView.builder(
       itemBuilder: (context,index){
         return ListTile(
+          leading: Icon(Icons.arrow_right,),
           title: Text(listItems[index]),
+          onTap: (){
+            print("List ${listItems[index]} clicked");
+          },
         );
   }
   );
