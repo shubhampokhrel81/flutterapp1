@@ -1,53 +1,49 @@
 import "package:flutter/material.dart";
 
-void main() => runApp(MaterialApp(
-  title: "Exploring dynamic lists",
-  home: Scaffold(
-    appBar: AppBar(title:Text("Dynamic lists")),
-    body: getListView(),
-    floatingActionButton: FloatingActionButton(
-      onPressed: (){
-        debugPrint("FAB clicked");
-      },
-      child: Icon(Icons.add),
-      tooltip: 'Add more item',
-    ),
-  ),
-
-));
-
-List<String> getListElements(){
-  var items = List<String>.generate(100, (counter) =>"Item $counter");
-  return items;
+void main() {
+  runApp(MaterialApp(
+    title: "Stateful app Example",
+    home: FavoriteCity(),
+  ));
 }
 
-Widget getListView(){
-  var listItems = getListElements();
-  
-  var listView = ListView.builder(
-      itemBuilder: (context,index){
-        return ListTile(
-          leading: Icon(Icons.arrow_right,),
-          title: Text(listItems[index]),
-          onTap: (){
-            showSnackBar(context, listItems[index]);
-//            print("List ${listItems[index]} clicked");
-          },
-        );
+class FavoriteCity extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _FavoriteCityState();
   }
-  );
-  return listView;
 }
 
-void showSnackBar(BuildContext context, String item){
-  var snackBar = SnackBar(
-    content: Text("You just tapped $item"),
-    action: SnackBarAction(
-      label: "UNDO",
-      onPressed: (){
-        debugPrint("Performing dummy UNDO operation");
-      },
-    ),
-  );
-      Scaffold.of(context).showSnackBar(snackBar);
+class _FavoriteCityState extends State<FavoriteCity>{
+  String nameCity = "";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Stateful App Example"),
+      ),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            TextField(
+              onSubmitted: (String userInput){
+                setState(() {
+                  nameCity = userInput;
+                });
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Text(
+                "Entered city is $nameCity",
+                style: TextStyle(fontSize: 20.0),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
 }
