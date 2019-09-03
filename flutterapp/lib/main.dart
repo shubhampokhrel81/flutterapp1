@@ -30,6 +30,7 @@ Widget getListView(){
       leading: Icon(Icons.phone),
       title: Text("Phone",style: TextStyle(color: Colors.blue, fontSize: 20.0),),
     ),
+    Text("Another element Text on listTile", style:TextStyle(fontSize: 30.0),textAlign: TextAlign.center,),
   ],
   );
   return listView;
